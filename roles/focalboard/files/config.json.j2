@@ -1,0 +1,15 @@
+{
+    "serverRoot": "http://localhost:{{ web_port }}",
+    "port": {{ web_port }},
+    "dbtype": "mysql",
+    "dbconfig": "{{ mysql_user }}:{{ mysql_password }}@tcp(127.0.0.1:3306)/{{ mysql_db }}",
+    "useSSL": false,
+    "webpath": "./pack",
+    "filespath": "./data/files",
+    "telemetry": true,
+    "session_expire_time": 2592000,
+    "session_refresh_time": 18000,
+    "localOnly": false,
+    "enableLocalMode": true,
+    "localModeSocketLocation": "/var/tmp/focalboard_local.socket"
+}

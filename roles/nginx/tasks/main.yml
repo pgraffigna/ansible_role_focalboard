@@ -1,0 +1,21 @@
+---
+- name: Incluye el archivo con las variables
+  ansible.builtin.include_vars:
+    file: vars_main.yml
+
+- name: Instala nginx
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    update_cache: true
+    cache_valid_time: 3600
+  with_items: "{{ nginx_packages }}"
+
+- name: Copiando archivos de configuracion
+  ansible.builtin.template:
+    src: "files/{{ nginx_conf }}.j2"
+    dest: "/etc/nginx/sites-enabled/{{ nginx_conf }}"
+
+- name: Eliminar sitio por default
+  ansible.builtin.shell: /usr/bin/rm /etc/nginx/sites-enabled/default
+  notify: servicios_nginx
+

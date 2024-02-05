@@ -1,0 +1,14 @@
+---
+- name: Recargar nginx
+  ansible.builtin.service:
+    name: nginx
+    state: reloaded
+  listen: servicios_nginx
+
+- name: Iniciar + Activar focalboard
+  ansible.builtin.service:
+    name: focalboard
+    state: started
+    enabled: true
+  listen: servicios_focalboard
+

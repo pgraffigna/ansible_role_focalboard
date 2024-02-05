@@ -1,0 +1,8 @@
+---
+- hosts: focal
+  become: true
+
+  roles:
+    - { role: mysql, tags: [ 'mysql' ] }
+    - role: nginx
+    - role: focalboard

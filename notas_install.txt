@@ -1,0 +1,32 @@
+# instalar focalboard
+wget -q https://github.com/mattermost/focalboard/releases/download/v7.10.6/focalboard-server-linux-amd64.tar.gz -O /tmp/focalboard-server-linux-amd64.tar.gz
+cd /tmp && tar -xvzf /tmp/focalboard-server-linux-amd64.tar.gz
+sudo mv focalboard /opt
+
+# instalar nginx
+sudo apt update && sudo apt install -y nginx
+
+# configurar nginx
+sudo nano /etc/nginx/sites-available/focalboard
+
+# eliminar default conf
+sudo rm /etc/nginx/sites-enabled/default
+	
+# activar sitio y recargar nginx
+sudo ln -s /etc/nginx/sites-available/focalboard /etc/nginx/sites-enabled/focalboard
+sudo systemctl enable nginx.service --now
+
+# instalar + configurar mysql
+sudo apt install -y mysql-server 
+
+sudo mysql
+CREATE DATABASE boards;
+CREATE USER 'boardsuser'@'localhost' IDENTIFIED BY 'boardsuser-password';
+GRANT ALL PRIVILEGES ON boards.* TO 'boardsuser'@'localhost'; 
+
+# configuracion focalboard
+sudo nano /opt/focalboard/config.json
+
+# creando servicio
+sudo nano /lib/systemd/system/focalboard.service
+sudo systemctl daemon-reload && sudo systemctl enable focalboard.service
