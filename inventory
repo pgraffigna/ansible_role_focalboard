@@ -1,5 +1,5 @@
 [focal]
-192.168.121.49
+192.168.121.156
 
 [focal:vars]
 ansible_ssh_user=vagrant

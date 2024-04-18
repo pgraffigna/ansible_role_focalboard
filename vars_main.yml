@@ -1,9 +1,9 @@
 ---
 # mysql
 mysql_root_password: "mysql_root_password"
-mysql_db: "boards"
-mysql_user: "boardsuser"
-mysql_password: "boardsuser-password"
+mysql_db: "focal_db"
+mysql_user: "focal_user"
+mysql_password: "focal_pass"
 
 # nginx
 server_name: "focalboard.home.local"

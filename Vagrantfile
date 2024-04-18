@@ -1,5 +1,5 @@
 ENV['VAGRANT_DEFAULT_PROVIDER'] = 'libvirt'
-IMAGEN = "generic/ubuntu2004"
+IMAGEN = "generic/ubuntu2204"
 HOSTNAME = "focalboard.home.local"
 
 Vagrant.configure("2") do |config|
